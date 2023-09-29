@@ -10,12 +10,13 @@ export function TopicoForm({ onAdd, autores }: TopicoFormProps) {
   const descricaoInputRef = useRef<HTMLInputElement>(null);
   const autorInputRef = useRef<HTMLSelectElement>(null);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const descricao = descricaoInputRef.current!.value;
     const autor = autorInputRef.current!.value;
 
-    event.target.reset()
+    const form = (event.target as HTMLFormElement)
+    form.reset()
 
     if(descricao.trim().length > 0) {
       onAdd(descricao, autor);

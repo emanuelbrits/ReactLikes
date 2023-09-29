@@ -9,13 +9,14 @@ export function AutorForm({onAdd}: AutorFormProps) {
     const cidadeInputRef = useRef<HTMLInputElement>(null)
     const paisInputRef = useRef<HTMLInputElement>(null)
 
-    const handleSubmit = (event)=> {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=> {
         event.preventDefault()
         const nome = nomeInputRef.current!.value
         const cidade = cidadeInputRef.current!.value
         const pais = paisInputRef.current!.value
 
-        event.target.reset()
+        const form = (event.target as HTMLFormElement)
+        form.reset()
 
         if(nome.trim().length <= 0) {
             alert('Digite o nome do autor')
