@@ -20,12 +20,15 @@ export function TopicoListItem({topico}: TopicoListItemProps) {
     const downvote = ()=> {
         setUpvotes(upvotes - 1)
     }
+
     return(
         <>
             <p>{topico.descricao}</p>
             <p>Por: {topico.autor}</p>
             <p>Publicado em: {dataFormatada}</p>
-            <p>Upvotes: {upvotes}</p>
+            {upvotes > 0 ?
+            <p style={{color: "green"}}>Upvotes: {upvotes}</p> :
+            <p style={{color: "red"}}>Upvotes: {upvotes}</p>}
             <button onClick={upvote}>Upvote</button> <button onClick={downvote}>Downvote</button>
         </>
     )
